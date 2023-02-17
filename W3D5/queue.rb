@@ -7,23 +7,24 @@ class MyQueue
         @queue = []
     end
 
+    #add people to the line = add to the front
     def enqueue(el)
-        # queue.unshift(el)
-        queue.insert(0, el)
+        queue.unshift(el)
         self
     end
 
+    #the first in line is the last element in the array
     def dequeue
-        queue.shift
-        # queue.delete(queue[0])
+        queue.pop
     end
 
+    #shows the first in line
     def peek
-        queue.first
+        queue.last
     end
 
-    def show
-
+    def show #return a copy of the array, it will affect the copy and not the original, so who cares what they do.
+        return queue.dup
     end
 
     def size
@@ -33,8 +34,6 @@ class MyQueue
     def empty?
         queue.empty?
     end
-
-    
 
     private
     attr_reader :queue
@@ -46,5 +45,5 @@ p q.enqueue(4)
 # p q.peek
 # p q.enqueue(5)
 # p q.peek
-# p q.dequeue
-# p q
+p q.dequeue
+p q.show
