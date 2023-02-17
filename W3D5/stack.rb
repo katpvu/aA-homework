@@ -11,17 +11,18 @@ class Stack
   
     def pop
       # removes one element from the stack
-      @stack.delete(@stack[0])
+      @stack.delete(@stack[-1])
     end
   
     def peek
       # returns, but doesn't remove, the top element in the stack
-      @stack[0]
+      @stack[-1]
     end
 end
 
 stk = Stack.new
 p stk.push(3)
+p stk.push(4)
 p stk.peek
 p stk.pop
 p stk
