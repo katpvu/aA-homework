@@ -10,10 +10,9 @@ class Stack
       self #is a stack instance, if we do not return self, we are return an array which can be manipulated using array methods instead of limiting what we can do with the stack
     end
   
-    def pop
+    def pop #should evaluate to deleted element
       # removes one element from the stack
-      store.delete(@store[-1])
-      self #again, returning the stack INSTANCE
+      store.delete(@store[-1]) 
     end
   
     def peek
@@ -30,4 +29,4 @@ p stk.push(3)
 p stk.push(4)
 p stk.peek
 p stk.pop
-p stk.store
+# p stk.store
