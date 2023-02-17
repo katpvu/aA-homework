@@ -20,6 +20,19 @@ class Stack
       store[-1]
     end
 
+    def size
+        store.length
+    end
+
+    def empty?
+        store.empty?
+    end
+
+    def inspect 
+        #every time self is returned, only show object and keep rest of info private (the store/stack)
+        "<#Stack:#{store.object_id}>"
+    end
+
     private
     attr_reader :store #if this was not private, the getter would return an array, which can be manipulated using array methods
 end
@@ -29,4 +42,4 @@ p stk.push(3)
 p stk.push(4)
 p stk.peek
 p stk.pop
-# p stk.store
+p stk
