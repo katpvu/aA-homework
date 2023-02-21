@@ -1,6 +1,7 @@
+require "byebug"
 class Board
   attr_accessor :cups
-
+  attr_reader :current_player_name
   def initialize(name1, name2)
     @player1 = name1
     @player2 = name2
@@ -24,21 +25,29 @@ class Board
   end
 
   def make_move(start_pos, current_player_name)
+    debugger
     current_pos = start_pos + 1
     
     until cups[start_pos].empty?
-      cups[current_pos] << cups[start_pos].pop unless current_pos == (current_player_name == @player_1 ? 6 : 13)
+      if current_pos != (current_player_name == @player1 ? 13 : 6)
+        cups[current_pos] << cups[start_pos].pop 
+      end
       current_pos += 1
     end
+
     self.render
-    self.next_turn(current_pos)
+    self.next_turn(current_pos - 1)
   end
 
   def next_turn(ending_cup_idx)
     # helper method to determine what #make_move returns
     if cups[ending_cup_idx].empty?
       return :switch
-    # elsif 
+    elsif ending_cup_idx == 13 || ending_cup_idx == 6
+       #ended on current player's store
+      return :prompt
+    else 
+      return ending_cup_idx
     end
   end
 
