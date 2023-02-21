@@ -37,7 +37,8 @@ queue but also of all the nodes you've visited so far. If you find the
 
 ```ruby
 def bfs(starting_node, target_value)
-
+  visited = Set.new()
+  
 end
 ```
 
