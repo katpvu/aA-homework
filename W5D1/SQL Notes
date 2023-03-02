@@ -1,0 +1,59 @@
+SELECT column, another_column, …
+FROM mytable
+INNER JOIN another_table 
+    ON mytable.id = another_table.id
+--INNER/LEFT/RIGHT/FULL JOIN another_table 
+   --ON mytable.id = another_table.matching_id
+WHERE condition IS/IS NOT NULL
+    AND/OR another_condition
+    AND/OR …;
+ORDER BY 
+LIMIT num OFFSET num
+
+
+-- Tables that share information about a single entity need to have a primary key that identifies that entity uniquely across the database. One common primary key type is an auto-incrementing integer (because they are space efficient), but it can also be a string, hashed value, so long as it is unique.
+
+-- Select query with expression aliases
+SELECT col_expression AS expr_description, …
+FROM mytable;
+
+-- Select query with aggregate functions over all rows
+SELECT AGG_FUNC(column_or_expression) AS aggregate_description, …
+FROM mytable
+WHERE constraint_expression;
+
+-- Common aggregate fxns: COUNT(*), COUNT(column), MIN(column), MAX(column), AVG(column), SUM(column).
+
+
+
+-- Select query with aggregate functions over groups
+SELECT AGG_FUNC(column_or_expression) AS aggregate_description, …
+FROM mytable
+WHERE constraint_expression
+GROUP BY column;
+-- The GROUP BY clause works by grouping rows that have the same value in the column specified.
+
+-- Select query with HAVING constraint
+SELECT group_by_column, AGG_FUNC(column_expression) AS aggregate_result_alias, …
+FROM mytable
+WHERE condition
+GROUP BY column
+HAVING group_condition;
+-- The HAVING clause constraints are written the same way as the WHERE clause constraints, and are applied to the grouped rows.
+
+-- Complete SELECT query
+SELECT DISTINCT column, AGG_FUNC(column_or_expression), …
+FROM mytable
+    JOIN another_table
+      ON mytable.column = another_table.column
+WHERE constraint_expression
+GROUP BY column
+HAVING constraint_expression
+ORDER BY column ASC/DESC
+LIMIT count OFFSET COUNT;
+
+-- Learning Objectives:
+-- - Why do we need databases
+-- - Relational DataBase Management System
+-- - 
+
